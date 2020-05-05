@@ -3,6 +3,7 @@ import { app } from '../app';
 import mongoose from 'mongoose';
 import { Order, Ticket } from '../models';
 import { Enums } from '@lm-ticketing/sdk';
+import { natsWrapper } from '../nats-wrapper';
 
 describe('New order router', () => {
   const path = '/api/orders';
@@ -56,5 +57,20 @@ describe('New order router', () => {
       .expect(201);
   });
 
-  it.todo('emits an order created event');
+  it('emits an order created event', async () => {
+    const ticket = Ticket.build({
+      title: 'title',
+      price: 100,
+    });
+
+    await ticket.save();
+
+    await request(app)
+      .post(path)
+      .set('Cookie', global.signin())
+      .send({ ticketId: ticket.id })
+      .expect(201);
+
+    expect(natsWrapper.client.publish).toHaveBeenCalled();
+  });
 });

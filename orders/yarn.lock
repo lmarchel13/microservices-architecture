@@ -448,10 +448,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@lm-ticketing/sdk@^1.0.7":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@lm-ticketing/sdk/-/sdk-1.0.8.tgz#e2f3461e1c2be89b3b37f5342252d6fd85a85b86"
-  integrity sha512-PYGgRpVy440dkcbG18BRlDdIct4PLamlvvoT5/Oc14Vgb/e1Hfl/84fvG87lS2xXPIK1R1xGO6NqD2Ho3w3q7g==
+"@lm-ticketing/sdk@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@lm-ticketing/sdk/-/sdk-1.0.9.tgz#147fce673e21c40a904e2083bee60a7499ee1a9f"
+  integrity sha512-H7PsRm878aOw27CFPh9r49M6+txD49P3WnLar6T3T0/Bm4jIHehtmkIgzSBi/TcWSnesGE1X7G92vzPNtMIDDw==
   dependencies:
     "@types/cookie-session" "^2.0.39"
     "@types/express" "^4.17.6"

@@ -1,11 +1,13 @@
 import express, { Request, Response } from 'express';
-import { Order } from '../models';
+import { Order, Ticket } from '../models';
 import {
   NotFoundError,
   UnauthorizedError,
   requireAuth,
 } from '@lm-ticketing/sdk';
 import { OrderStatus } from '@lm-ticketing/sdk/build/events/enums';
+import { OrderCancelledPublisher } from '../events/publishers';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -24,6 +26,11 @@ router.delete(
     order.status = OrderStatus.Cancelled;
 
     await order.save();
+
+    new OrderCancelledPublisher(natsWrapper.client).publish({
+      id: order.id,
+      ticket: { id: order.ticket.id },
+    });
 
     res.status(204).send(order);
   }

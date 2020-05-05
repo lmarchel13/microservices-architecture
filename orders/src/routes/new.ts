@@ -9,6 +9,8 @@ import { body } from 'express-validator';
 import mongoose from 'mongoose';
 import { Ticket, Order } from '../models';
 import { OrderStatus } from '@lm-ticketing/sdk/build/events/enums';
+import { OrderCreatedPublisher } from '../events/publishers';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -48,6 +50,17 @@ router.post(
     });
 
     await order.save();
+
+    new OrderCreatedPublisher(natsWrapper.client).publish({
+      id: order.id,
+      status: order.status,
+      userId: order.userId,
+      expiresAt: order.expiresAt.toISOString(),
+      ticket: {
+        id: ticket.id,
+        price: ticket.price,
+      },
+    });
 
     res.status(201).send(order);
   }
