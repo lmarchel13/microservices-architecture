@@ -19,9 +19,9 @@ spec:
             - name: MONGO_URI
               value: mongodb://orders-mongo-srv:27017/orders
             - name: NATS_URL
-              value: "http://nats-service:4222"
+              value: 'http://nats-service:4222'
             - name: NATS_CLUSTER_ID
-              value: "ticketing"
+              value: 'ticketing'
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:

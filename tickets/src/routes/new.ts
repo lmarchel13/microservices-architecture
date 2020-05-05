@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
-import { requireAuth, validateRequest } from '@sgtickets/common';
+import { requireAuth, validateRequest } from '@lm-ticketing/sdk';
 import { Ticket } from '../models/ticket';
-import { TicketCreatedPublisher } from '../events/publishers/ticket-created-publisher';
+import { TicketCreatedPublisher } from '../events/publishers/TicketCreatedPublisher';
 import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();

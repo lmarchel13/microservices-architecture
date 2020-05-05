@@ -4,10 +4,10 @@ import {
   validateRequest,
   NotFoundError,
   requireAuth,
-  NotAuthorizedError,
-} from '@sgtickets/common';
+  UnauthorizedError,
+} from '@lm-ticketing/sdk';
 import { Ticket } from '../models/ticket';
-import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
+import { TicketUpdatedPublisher } from '../events/publishers/TicketUpdatedPublisher';
 import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
@@ -30,7 +30,7 @@ router.put(
     }
 
     if (ticket.userId !== req.currentUser!.id) {
-      throw new NotAuthorizedError();
+      throw new UnauthorizedError('Unauthorized');
     }
 
     ticket.set({
