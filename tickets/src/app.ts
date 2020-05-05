@@ -6,7 +6,6 @@ import { createTicketRouter } from './routes/new';
 import { showTicketRouter } from './routes/show';
 import { indexTicketRouter } from './routes/index';
 import { updateTicketRouter } from './routes/update';
-import { Ticket } from '../models/ticket';
 
 const app = express();
 app.set('trust proxy', true);

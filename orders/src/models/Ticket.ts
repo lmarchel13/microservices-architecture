@@ -1,15 +1,20 @@
 import mongoose from 'mongoose';
+import { Enums } from '@lm-ticketing/sdk';
+import { Order } from './Order';
+
+const NOT_CANCELLED = Object.values(Enums.OrderStatus).filter(
+  (status) => status !== Enums.OrderStatus.Cancelled
+);
 
 interface TicketAttributes {
   title: string;
   price: number;
-  userId: string;
 }
 
 interface TicketDocument extends mongoose.Document {
   title: string;
   price: number;
-  userId: string;
+  isReserved(): Promise<boolean>;
 }
 
 interface TicketModel extends mongoose.Model<TicketDocument> {
@@ -25,10 +30,7 @@ const schema = new mongoose.Schema(
     price: {
       type: Number,
       required: true,
-    },
-    userId: {
-      type: String,
-      required: true,
+      min: 0,
     },
   },
   {
@@ -45,6 +47,17 @@ schema.statics.build = (attrs: TicketAttributes) => {
   return new Ticket(attrs);
 };
 
+schema.methods.isReserved = async function () {
+  const order = await Order.findOne({
+    ticket: this,
+    status: {
+      $in: NOT_CANCELLED,
+    },
+  });
+
+  return !!order;
+};
+
 const Ticket = mongoose.model<TicketDocument, TicketModel>('Ticket', schema);
 
-export { Ticket };
+export { Ticket, TicketDocument };

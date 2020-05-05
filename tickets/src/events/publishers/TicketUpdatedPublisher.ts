@@ -1,7 +1,7 @@
-import { BasePublisher, Subjects, EventInterfaces } from '@lm-ticketing/sdk';
+import { BasePublisher, Enums, EventInterfaces } from '@lm-ticketing/sdk';
 
 export class TicketUpdatedPublisher extends BasePublisher<
   EventInterfaces.TicketUpdatedEvent
 > {
-  subject: Subjects.TicketUpdated = Subjects.TicketUpdated;
+  subject: Enums.Subjects.TicketUpdated = Enums.Subjects.TicketUpdated;
 }

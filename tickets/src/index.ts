@@ -37,9 +37,7 @@ const start = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-    console.info(
-      '[TICKETS SERVICE] Connected successfully to tickets database'
-    );
+    console.info('[TICKETS SERVICE] Connected successfully to database');
   } catch (err) {
     console.error(err);
   }
