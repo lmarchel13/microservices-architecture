@@ -7,6 +7,7 @@ const NOT_CANCELLED = Object.values(Enums.OrderStatus).filter(
 );
 
 interface TicketAttributes {
+  id: string;
   title: string;
   price: number;
 }
@@ -44,7 +45,10 @@ const schema = new mongoose.Schema(
 );
 
 schema.statics.build = (attrs: TicketAttributes) => {
-  return new Ticket(attrs);
+  const { id: _id } = attrs;
+  delete attrs.id;
+
+  return new Ticket({ _id, ...attrs });
 };
 
 schema.methods.isReserved = async function () {

@@ -1,11 +1,6 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
-import {
-  validateRequest,
-  NotFoundError,
-  requireAuth,
-  UnauthorizedError,
-} from '@lm-ticketing/sdk';
+import { validateRequest, NotFoundError, requireAuth, UnauthorizedError } from '@lm-ticketing/sdk';
 import { Ticket } from '../models/ticket';
 import { TicketUpdatedPublisher } from '../events/publishers/TicketUpdatedPublisher';
 import { natsWrapper } from '../nats-wrapper';
@@ -17,9 +12,7 @@ router.put(
   requireAuth,
   [
     body('title').not().isEmpty().withMessage('Title is required'),
-    body('price')
-      .isFloat({ gt: 0 })
-      .withMessage('Price must be provided and must be greater than 0'),
+    body('price').isFloat({ gt: 0 }).withMessage('Price must be provided and must be greater than 0'),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
@@ -37,7 +30,9 @@ router.put(
       title: req.body.title,
       price: req.body.price,
     });
+
     await ticket.save();
+
     new TicketUpdatedPublisher(natsWrapper.client).publish({
       id: ticket.id,
       title: ticket.title,
