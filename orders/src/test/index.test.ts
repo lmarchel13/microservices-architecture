@@ -1,15 +1,6 @@
 import request from 'supertest';
 import { app } from '../app';
-import mongoose from 'mongoose';
-import { Order, Ticket } from '../models';
-import { Enums } from '@lm-ticketing/sdk';
-
-const buildTicket = async () => {
-  return Ticket.build({
-    title: 'title',
-    price: 20,
-  }).save();
-};
+import { buildTicket } from './utils';
 
 describe('Show all orders router', () => {
   const path = '/api/orders';
@@ -22,11 +13,7 @@ describe('Show all orders router', () => {
     const userOne = global.signin();
     const userTwo = global.signin();
 
-    await request(app)
-      .post(path)
-      .set('Cookie', userOne)
-      .send({ ticketId: ticketOne.id })
-      .expect(201);
+    await request(app).post(path).set('Cookie', userOne).send({ ticketId: ticketOne.id }).expect(201);
 
     const { body: orderOne } = await request(app)
       .post(path)

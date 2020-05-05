@@ -1,39 +1,32 @@
 import express, { Request, Response } from 'express';
 import { Order, Ticket } from '../models';
-import {
-  NotFoundError,
-  UnauthorizedError,
-  requireAuth,
-} from '@lm-ticketing/sdk';
+import { NotFoundError, UnauthorizedError, requireAuth } from '@lm-ticketing/sdk';
 import { OrderStatus } from '@lm-ticketing/sdk/build/events/enums';
 import { OrderCancelledPublisher } from '../events/publishers';
 import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
-router.delete(
-  '/api/orders/:id',
-  requireAuth,
-  async (req: Request, res: Response) => {
-    const { id: userId } = req.currentUser!;
-    const { id: orderId } = req.params;
+router.delete('/api/orders/:id', requireAuth, async (req: Request, res: Response) => {
+  const { id: userId } = req.currentUser!;
+  const { id: orderId } = req.params;
 
-    const order = await Order.findById(orderId).populate('ticket');
+  const order = await Order.findById(orderId).populate('ticket');
 
-    if (!order) throw new NotFoundError();
-    if (order.userId !== userId) throw new UnauthorizedError('Unauthorized');
+  if (!order) throw new NotFoundError();
+  if (order.userId !== userId) throw new UnauthorizedError('Unauthorized');
 
-    order.status = OrderStatus.Cancelled;
+  order.status = OrderStatus.Cancelled;
 
-    await order.save();
+  await order.save();
 
-    new OrderCancelledPublisher(natsWrapper.client).publish({
-      id: order.id,
-      ticket: { id: order.ticket.id },
-    });
+  new OrderCancelledPublisher(natsWrapper.client).publish({
+    id: order.id,
+    version: order.version,
+    ticket: { id: order.ticket.id },
+  });
 
-    res.status(204).send(order);
-  }
-);
+  res.status(204).send(order);
+});
 
 export { router as deleteOrderRouter };

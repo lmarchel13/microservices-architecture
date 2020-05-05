@@ -1,11 +1,11 @@
 import request from 'supertest';
 import { app } from '../app';
 import mongoose from 'mongoose';
-import { Order, Ticket } from '../models';
-import { Enums } from '@lm-ticketing/sdk';
+import { Ticket } from '../models';
 
 const buildTicket = async () => {
   return Ticket.build({
+    id: mongoose.Types.ObjectId().toHexString(),
     title: 'title',
     price: 20,
   }).save();
@@ -17,10 +17,7 @@ describe('Show order by specific user router', () => {
   it('returns 404 if order not found', async () => {
     const id = mongoose.Types.ObjectId();
 
-    await request(app)
-      .get(`${path}/${id}`)
-      .set('Cookie', global.signin())
-      .expect(404);
+    await request(app).get(`${path}/${id}`).set('Cookie', global.signin()).expect(404);
   });
 
   it('returns 401 if order does not belong to user', async () => {
@@ -28,16 +25,9 @@ describe('Show order by specific user router', () => {
 
     const {
       body: { id: orderId },
-    } = await request(app)
-      .post(path)
-      .set('Cookie', global.signin())
-      .send({ ticketId })
-      .expect(201);
+    } = await request(app).post(path).set('Cookie', global.signin()).send({ ticketId }).expect(201);
 
-    await request(app)
-      .get(`${path}/${orderId}`)
-      .set('Cookie', global.signin())
-      .expect(401);
+    await request(app).get(`${path}/${orderId}`).set('Cookie', global.signin()).expect(401);
   });
 
   it('fetch order from a specific user', async () => {
@@ -46,15 +36,8 @@ describe('Show order by specific user router', () => {
 
     const {
       body: { id: orderId },
-    } = await request(app)
-      .post(path)
-      .set('Cookie', user)
-      .send({ ticketId: ticket.id })
-      .expect(201);
+    } = await request(app).post(path).set('Cookie', user).send({ ticketId: ticket.id }).expect(201);
 
-    await request(app)
-      .get(`${path}/${orderId}`)
-      .set('Cookie', user)
-      .expect(200);
+    await request(app).get(`${path}/${orderId}`).set('Cookie', user).expect(200);
   });
 });
