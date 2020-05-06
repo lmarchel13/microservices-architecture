@@ -1,4 +1,4 @@
-# Ticketing App
+## Studying microservices architecture
 
 - Microservices
 - TypeScript
@@ -6,9 +6,8 @@
 - Kubernetes
 - Skaffold
 - Ingress
-- Testing in Microservices
-- ReactJS
-- NextJS
+- TDD
+- ReactJS (NextJS)
 - SDK for shared code
 
 Ingress for Mac
