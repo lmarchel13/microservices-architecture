@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
-import { validateRequest, NotFoundError, requireAuth, UnauthorizedError } from '@lm-ticketing/sdk';
-import { Ticket } from '../models/ticket';
+import { validateRequest, NotFoundError, requireAuth, UnauthorizedError, BadRequestError } from '@lm-ticketing/sdk';
+import { Ticket } from '../models/Ticket';
 import { TicketUpdatedPublisher } from '../events/publishers/TicketUpdatedPublisher';
 import { natsWrapper } from '../nats-wrapper';
 
@@ -18,13 +18,11 @@ router.put(
   async (req: Request, res: Response) => {
     const ticket = await Ticket.findById(req.params.id);
 
-    if (!ticket) {
-      throw new NotFoundError();
-    }
+    if (!ticket) throw new NotFoundError();
 
-    if (ticket.userId !== req.currentUser!.id) {
-      throw new UnauthorizedError('Unauthorized');
-    }
+    if (ticket.userId !== req.currentUser!.id) throw new UnauthorizedError('Unauthorized');
+
+    if (ticket.orderId) throw new BadRequestError('Ticket is already reserved');
 
     ticket.set({
       title: req.body.title,

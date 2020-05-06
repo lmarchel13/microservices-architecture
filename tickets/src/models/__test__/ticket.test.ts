@@ -1,4 +1,4 @@
-import { Ticket } from '../ticket';
+import { Ticket } from '../Ticket';
 
 describe('Ticket model test', () => {
   const userId = '123';

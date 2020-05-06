@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { NotFoundError } from '@lm-ticketing/sdk';
-import { Ticket } from '../models/ticket';
+import { Ticket } from '../models/Ticket';
 
 const router = express.Router();
 
