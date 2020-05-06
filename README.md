@@ -8,6 +8,7 @@
 - Ingress
 - TDD
 - ReactJS (NextJS)
+- NATS Streaming
 - SDK for shared code
 
 Ingress for Mac
