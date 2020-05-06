@@ -1,6 +1,5 @@
 # Studying microservices architecture
 
-- Microservices
 - TypeScript
 - Docker
 - Kubernetes
