@@ -1,4 +1,4 @@
-## Studying microservices architecture
+# Studying microservices architecture
 
 - Microservices
 - TypeScript
