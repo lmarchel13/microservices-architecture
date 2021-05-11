@@ -448,10 +448,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@lm-ticketing/sdk@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@lm-ticketing/sdk/-/sdk-1.0.11.tgz#296ad2526e1ddab20ce60867b4f0590731a91648"
-  integrity sha512-BgycJ4GC3wZURU65b6p/R/6/X9/boxgZpJPnvluXvSq9BjQD33+8jKF5ZGoFLu0VwahifeToAE5gzoZ3WDFEDQ==
+"@lm-ticketing/sdk@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@lm-ticketing/sdk/-/sdk-1.0.12.tgz#1c569d2302e54f8f2e9ab96c9dbd614d1cc8df27"
+  integrity sha512-vO5ITzBlv1ycADkg4bG0TVdZyobXZYfec8cDTSZdx3wkFdkAV7kPIM66MvxoxPD5j9KJ8W/XaiErhfxOfgjCRg==
   dependencies:
     "@types/cookie-session" "^2.0.39"
     "@types/express" "^4.17.6"
@@ -2132,9 +2132,9 @@ has-values@^1.0.0:
     kind-of "^4.0.0"
 
 hosted-git-info@^2.1.4:
-  version "2.8.8"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
-  integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 html-encoding-sniffer@^1.0.2:
   version "1.0.2"
