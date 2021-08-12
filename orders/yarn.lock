@@ -448,10 +448,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@lm-ticketing/sdk@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@lm-ticketing/sdk/-/sdk-1.0.11.tgz#296ad2526e1ddab20ce60867b4f0590731a91648"
-  integrity sha512-BgycJ4GC3wZURU65b6p/R/6/X9/boxgZpJPnvluXvSq9BjQD33+8jKF5ZGoFLu0VwahifeToAE5gzoZ3WDFEDQ==
+"@lm-ticketing/sdk@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@lm-ticketing/sdk/-/sdk-1.0.12.tgz#1c569d2302e54f8f2e9ab96c9dbd614d1cc8df27"
+  integrity sha512-vO5ITzBlv1ycADkg4bG0TVdZyobXZYfec8cDTSZdx3wkFdkAV7kPIM66MvxoxPD5j9KJ8W/XaiErhfxOfgjCRg==
   dependencies:
     "@types/cookie-session" "^2.0.39"
     "@types/express" "^4.17.6"
@@ -3683,9 +3683,9 @@ path-key@^3.0.0, path-key@^3.1.0:
   integrity sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==
 
 path-parse@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
-  integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
+  integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
 path-to-regexp@0.1.7:
   version "0.1.7"
