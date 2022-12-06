@@ -437,10 +437,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@lm-ticketing/sdk@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@lm-ticketing/sdk/-/sdk-1.0.1.tgz#9fde9558c985f563fd18f6f7d9753fbd6d1d9dfc"
-  integrity sha512-bXF5suObdk616WZz/BSpZvA8idZLa4avJwZkB/X+SY55B4p7WsCmwNBQzpkvgr90BwQwNV66aowLZp2zWwLQLA==
+"@lm-ticketing/sdk@^1.0.5":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@lm-ticketing/sdk/-/sdk-1.0.12.tgz#1c569d2302e54f8f2e9ab96c9dbd614d1cc8df27"
+  integrity sha512-vO5ITzBlv1ycADkg4bG0TVdZyobXZYfec8cDTSZdx3wkFdkAV7kPIM66MvxoxPD5j9KJ8W/XaiErhfxOfgjCRg==
   dependencies:
     "@types/cookie-session" "^2.0.39"
     "@types/express" "^4.17.6"
@@ -449,6 +449,7 @@
     express "^4.17.1"
     express-validator "^6.4.0"
     jsonwebtoken "^8.5.1"
+    node-nats-streaming "^0.2.6"
 
 "@sinonjs/commons@^1.7.0":
   version "1.7.2"
@@ -1473,9 +1474,9 @@ decamelize@^1.1.2, decamelize@^1.2.0:
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
 
 decode-uri-component@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
-  integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
+  integrity sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==
 
 dedent@^0.7.0:
   version "0.7.0"
@@ -2034,6 +2035,11 @@ globals@^11.1.0:
   version "11.12.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-11.12.0.tgz#ab8795338868a0babd8525758018c2a7eb95c42e"
   integrity sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==
+
+google-protobuf@^3.9.0:
+  version "3.21.2"
+  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.21.2.tgz#4580a2bea8bbb291ee579d1fefb14d6fa3070ea4"
+  integrity sha512-3MSOYFO5U9mPGikIYCzK0SaThypfGgS6bHqrUGXG3DPHCrb+txNqeEcns1W0lkGfk0rCyNXm7xB9rMxnCiZOoA==
 
 graceful-fs@^4.1.2, graceful-fs@^4.2.3:
   version "4.2.3"
@@ -3350,6 +3356,14 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+nats@^1.3.0:
+  version "1.4.12"
+  resolved "https://registry.yarnpkg.com/nats/-/nats-1.4.12.tgz#11a988d5041d95dfb1b6ac1e37c0cfb57b171579"
+  integrity sha512-Jf4qesEF0Ay0D4AMw3OZnKMRTQm+6oZ5q8/m4gpy5bTmiDiK6wCXbZpzEslmezGpE93LV3RojNEG6dpK/mysLQ==
+  dependencies:
+    nuid "^1.1.4"
+    ts-nkeys "^1.0.16"
+
 natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
@@ -3374,6 +3388,15 @@ node-modules-regexp@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/node-modules-regexp/-/node-modules-regexp-1.0.0.tgz#8d9dbe28964a4ac5712e9131642107c71e90ec40"
   integrity sha1-jZ2+KJZKSsVxLpExZCEHxx6Q7EA=
+
+node-nats-streaming@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/node-nats-streaming/-/node-nats-streaming-0.2.6.tgz#c5db3c58a034a5cb61a284691b1fe19b60bc4c4d"
+  integrity sha512-UTS/tHextk+qdXl0fiSKFPU12eWsRkeRzbzo1zk6ZbXu/PnszKtnSwzxhVRYveU7VjDebYsAFpde1MjC5Y3Nvw==
+  dependencies:
+    google-protobuf "^3.9.0"
+    nats "^1.3.0"
+    nuid "^1.1.0"
 
 node-notifier@^5.4.0:
   version "5.4.3"
@@ -3432,6 +3455,11 @@ npm-run-path@^4.0.0:
   integrity sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==
   dependencies:
     path-key "^3.0.0"
+
+nuid@^1.1.0, nuid@^1.1.4:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/nuid/-/nuid-1.1.6.tgz#a3b5a1df155f6615fed1dbd39ad3dbf9d2e0b82b"
+  integrity sha512-Eb3CPCupYscP1/S1FQcO5nxtu6l/F3k0MQ69h7f5osnsemVk5pkc8/5AyalVT+NCfra9M71U8POqF6EZa6IHvg==
 
 nwsapi@^2.2.0:
   version "2.2.0"
@@ -4579,6 +4607,13 @@ ts-jest@^25.4.0:
     semver "6.x"
     yargs-parser "18.x"
 
+ts-nkeys@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/ts-nkeys/-/ts-nkeys-1.0.16.tgz#b0c6e7c4f16f976c7e7ddb6982fc789a2f971248"
+  integrity sha512-1qrhAlavbm36wtW+7NtKOgxpzl+70NTF8xlz9mEhiA5zHMlMxjj3sEVKWm3pGZhHXE0Q3ykjrj+OSRVaYw+Dqg==
+  dependencies:
+    tweetnacl "^1.0.3"
+
 ts-node-dev@^1.0.0-pre.44:
   version "1.0.0-pre.44"
   resolved "https://registry.yarnpkg.com/ts-node-dev/-/ts-node-dev-1.0.0-pre.44.tgz#2f4d666088481fb9c4e4f5bc8f15995bd8b06ecb"
@@ -4634,6 +4669,11 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
+
+tweetnacl@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.3.tgz#ac0af71680458d8a6378d0d0d050ab1407d35596"
+  integrity sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==
 
 type-check@~0.3.2:
   version "0.3.2"
